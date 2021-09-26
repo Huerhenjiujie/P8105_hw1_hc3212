@@ -6,7 +6,7 @@ output: github_document
 ---
 
 This is the solution for Homework 1.
-```{r library}
+```{r library, results = 'hide'}
 library(tidyverse)
 ```
 
@@ -19,7 +19,7 @@ Create a data frame comprised of:
 * a character vector of length 10
 * a factor vector of length 10, with 3 different factor “levels”
 
-```{r create_df}
+```{r create_df, echo = FALSE}
 prob1_df =
   tibble(
     sample_1 = rnorm(10),
@@ -31,13 +31,21 @@ prob1_df
 ```
 
 Taking the mean of each variable.
-```{r takemean_pull_var}
+```{r takemean_pull_var, echo = FALSE}
 mean(pull(prob1_df, sample_1))
 mean(pull(prob1_df, samp_vec_0))
-#mean(pull(prob1_df, char_vec))
-#mean(pull(prob1_df, fact_vec))
+mean(pull(prob1_df, char_vec))
+mean(pull(prob1_df, fact_vec))
 ```
 
 The number and logical vector could take mean while the character and factor vector could not.
 
-
+Convert the logical, character, and factor variable into numeric.
+```{r convert_var, results = 'hide'}
+as.numeric(pull(prob1_df, samp_vec_0))
+as.numeric(pull(prob1_df, char_vec))
+as.numeric(pull(prob1_df, fact_vec))
+```
+```{r}
+prob1_df
+```
