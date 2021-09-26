@@ -22,9 +22,22 @@ Create a data frame comprised of:
 ```{r create_df}
 prob1_df =
   tibble(
-    sample = rnorm(10),
-    samp_vec_0 = sample > 0,
+    sample_1 = rnorm(10),
+    samp_vec_0 = sample_1 > 0,
     char_vec = c("a", "b", "c", "d", "e", "f", "g","h", "i", "j"),
     fact_vec = factor(c("low", "high", "low", "high", "low", "high", "low", "mid", "mid", "low"))
   )
+prob1_df
+```
+
+Taking the mean of each variable.
+```{r takemean_pull_var}
+mean(pull(prob1_df, sample_1))
+mean(pull(prob1_df, samp_vec_0))
+#mean(pull(prob1_df, char_vec))
+#mean(pull(prob1_df, fact_vec))
+```
+
+The number and logical vector could take mean while the character and factor vector could not.
+
 
