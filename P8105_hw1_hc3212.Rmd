@@ -46,6 +46,21 @@ as.numeric(pull(prob1_df, samp_vec_0))
 as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, fact_vec))
 ```
-```{r}
-prob1_df
+
+The
+Count the mean agian after convert.
+```{r count_mean_again, echo = FALSE}
+mean(as.numeric(pull(prob1_df, samp_vec_0)))
+mean(as.numeric(pull(prob1_df, char_vec)))
+mean(as.numeric(pull(prob1_df, fact_vec)))
 ```
+
+## Problem 2
+The trunk below is to download the a package containing the penguins dataset:
+```{r load_penguins}
+data("penguins", package = "palmerpenguins")
+```
+
+The **Penguins** dataset contains the following variables: `r ls(penguins)`.
+
+	Bill Depth (mm) is a `r class(pull(penguins, bill_depth_mm))` variable. The mean bill depth (mm) is `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`. Values for bill depth range from `r range(pull(penguins, bill_depth_mm), na.rm=TRUE)` (min, max). 
