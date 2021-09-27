@@ -6,7 +6,7 @@ output: github_document
 ---
 
 This is the solution for Homework 1.
-```{r library, results = 'hide'}
+```{r library}
 library(tidyverse)
 ```
 
@@ -20,8 +20,10 @@ Create a data frame comprised of:
 * a factor vector of length 10, with 3 different factor “levels”
 
 Solution:
+
 Create the sample:
 ```{r create_df, echo = FALSE}
+set.seed(1)
 prob1_df =
   tibble(
     sample_1 = rnorm(10),
@@ -29,7 +31,6 @@ prob1_df =
     char_vec = c("a", "b", "c", "d", "e", "f", "g","h", "i", "j"),
     fact_vec = factor(c("low", "high", "low", "high", "low", "high", "low", "mid", "mid", "low"))
   )
-prob1_df
 ```
 
 Taking the mean of each variable.
@@ -66,11 +67,39 @@ data("penguins", package = "palmerpenguins")
 
 The **Penguins** dataset contains the following variables: `r ls(penguins)`.
 
-	Bill Depth (mm) is a `r class(pull(penguins, bill_depth_mm))` variable. The mean bill depth (mm) is `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`. Values for bill depth range from `r range(pull(penguins, bill_depth_mm), na.rm=TRUE)` (min, max). ```{r descriptdata}
-char_class = ls(penguins)
-while (char_class != null){
-char_a = char_class[1],
-if 
+Bill depth (mm) is a `r class(pull(penguins, bill_depth_mm))` variable. The mean of bill depth (mm) is `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`. Values for bill depth range from `r range(pull(penguins, bill_depth_mm), na.rm=TRUE)` (min, max).
 
-print 
-}
+Bill length (mm) is a `r class(pull(penguins, bill_length_mm))` variable. The mean of bill length (mm) is `r mean(pull(penguins, bill_length_mm), na.rm=TRUE)`. Values for bill length range from `r range(pull(penguins, bill_length_mm), na.rm=TRUE)` (min, max). 
+
+Body mass (g) is a `r class(pull(penguins, body_mass_g))` variable. The mean of Body mass (g) is `r mean(pull(penguins, body_mass_g), na.rm=TRUE)`. Values for bill depth range from `r range(pull(penguins, body_mass_g), na.rm=TRUE)` (min, max). 
+
+Flipper length (mm) is a `r class(pull(penguins, flipper_length_mm))` variable. The mean of flipper length (mm) is `r mean(pull(penguins, flipper_length_mm), na.rm=TRUE)`. Values for flipper length range from `r range(pull(penguins, flipper_length_mm), na.rm=TRUE)` (min, max).
+
+Island is a `r class(pull(penguins, island))` variable, which has `r levels(pull(penguins, island))` islands.
+	
+
+Sex is a `r class(pull(penguins, sex))` variable, which has `r levels(pull(penguins, sex))` categories.
+	
+
+Species is a `r class(pull(penguins, species))` variable, which has species `r levels(pull(penguins, species))`.
+	
+
+Year is a `r class(pull(penguins, year))` variable. The range for the years variable is from `r range(pull(penguins, year))`.
+	
+
+The number of rows (observations) in the Penguin dataset is `r nrow(penguins)`.
+	
+
+The number of columns (variables) in the Penguin dataset is `r ncol(penguins)`.
+	
+This code chunk below is to generate a scatter plot for bill length and flipper length, each color represents a different species.
+	
+
+```{r scatterplot_penguin}
+library(ggplot2)
+set.seed(1)
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point() + ggtitle("Flipper Length vs. Bill Length for Penguins by Species") + theme(plot.title = element_text(hjust = 0.6))
+
+ggsave("scatterplot_penguin.pdf")
+```
+
