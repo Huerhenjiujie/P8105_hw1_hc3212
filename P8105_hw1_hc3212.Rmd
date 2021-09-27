@@ -19,6 +19,8 @@ Create a data frame comprised of:
 * a character vector of length 10
 * a factor vector of length 10, with 3 different factor “levels”
 
+Solution:
+Create the sample:
 ```{r create_df, echo = FALSE}
 prob1_df =
   tibble(
@@ -47,14 +49,15 @@ as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, fact_vec))
 ```
 
-The
-Count the mean agian after convert.
-```{r count_mean_again, echo = FALSE}
+Calculate the mean again after convert.
+```{r recalculate_mean, echo = FALSE}
 mean(as.numeric(pull(prob1_df, samp_vec_0)))
 mean(as.numeric(pull(prob1_df, char_vec)))
 mean(as.numeric(pull(prob1_df, fact_vec)))
 ```
 
+After covert, the factor and logical variable could turn into numeric while the character variable could not. The logical variable with "TRUE" and "FALSE" result could turn into "1" and "0", then the mean could be calculated. the facter variable could turn into "1", "2", "3", and calculated mean. Character variable will all equal to NA, the mean will return as NA.
+ 
 ## Problem 2
 The trunk below is to download the a package containing the penguins dataset:
 ```{r load_penguins}
@@ -63,4 +66,11 @@ data("penguins", package = "palmerpenguins")
 
 The **Penguins** dataset contains the following variables: `r ls(penguins)`.
 
-	Bill Depth (mm) is a `r class(pull(penguins, bill_depth_mm))` variable. The mean bill depth (mm) is `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`. Values for bill depth range from `r range(pull(penguins, bill_depth_mm), na.rm=TRUE)` (min, max). 
+	Bill Depth (mm) is a `r class(pull(penguins, bill_depth_mm))` variable. The mean bill depth (mm) is `r mean(pull(penguins, bill_depth_mm), na.rm=TRUE)`. Values for bill depth range from `r range(pull(penguins, bill_depth_mm), na.rm=TRUE)` (min, max). ```{r descriptdata}
+char_class = ls(penguins)
+while (char_class != null){
+char_a = char_class[1],
+if 
+
+print 
+}
