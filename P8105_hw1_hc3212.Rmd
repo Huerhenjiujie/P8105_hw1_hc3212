@@ -6,9 +6,6 @@ output: github_document
 ---
 
 This is the solution for Homework 1.
-```{r library}
-library(tidyverse)
-```
 
 ## Problem 1 
 
@@ -22,7 +19,9 @@ Create a data frame comprised of:
 Solution:
 
 Create the sample:
-```{r create_df, echo = FALSE}
+
+```{r create_df}
+library(tidyverse) 
 set.seed(1)
 prob1_df =
   tibble(
@@ -34,6 +33,7 @@ prob1_df =
 ```
 
 Taking the mean of each variable.
+
 ```{r takemean_pull_var, echo = FALSE}
 mean(pull(prob1_df, sample_1))
 mean(pull(prob1_df, samp_vec_0))
@@ -44,6 +44,7 @@ mean(pull(prob1_df, fact_vec))
 The number and logical vector could take mean while the character and factor vector could not.
 
 Convert the logical, character, and factor variable into numeric.
+
 ```{r convert_var, results = 'hide'}
 as.numeric(pull(prob1_df, samp_vec_0))
 as.numeric(pull(prob1_df, char_vec))
@@ -51,6 +52,7 @@ as.numeric(pull(prob1_df, fact_vec))
 ```
 
 Calculate the mean again after convert.
+
 ```{r recalculate_mean, echo = FALSE}
 mean(as.numeric(pull(prob1_df, samp_vec_0)))
 mean(as.numeric(pull(prob1_df, char_vec)))
@@ -61,6 +63,7 @@ After covert, the factor and logical variable could turn into numeric while the 
  
 ## Problem 2
 The trunk below is to download the a package containing the penguins dataset:
+
 ```{r load_penguins}
 data("penguins", package = "palmerpenguins")
 ```
@@ -77,23 +80,17 @@ Flipper length (mm) is a `r class(pull(penguins, flipper_length_mm))` variable. 
 
 Island is a `r class(pull(penguins, island))` variable, which has `r levels(pull(penguins, island))` islands.
 	
-
 Sex is a `r class(pull(penguins, sex))` variable, which has `r levels(pull(penguins, sex))` categories.
 	
-
 Species is a `r class(pull(penguins, species))` variable, which has species `r levels(pull(penguins, species))`.
 	
-
 Year is a `r class(pull(penguins, year))` variable. The range for the years variable is from `r range(pull(penguins, year))`.
 	
-
 The number of rows (observations) in the Penguin dataset is `r nrow(penguins)`.
 	
-
 The number of columns (variables) in the Penguin dataset is `r ncol(penguins)`.
 	
-This code chunk below is to generate a scatter plot for bill length and flipper length, each color represents a different species.
-	
+This chunk is to generate a scatter plot for bill length and flipper length, each color represents a different species.
 
 ```{r scatterplot_penguin}
 library(ggplot2)
